@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('PassKeeperApp.auth_app.urls')),
+    path('profile/', include('PassKeeperApp.profile_app.urls')),
 ]

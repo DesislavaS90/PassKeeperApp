@@ -1,0 +1,8 @@
+<h1>Profile Details</h1>
+
+{% if object.profile.first_name and object.profile.last_name  %}
+  <h2>Name: {{ object.profile.first_name }} {{ object.profile.last_name }}</h2>
+{% endif %}
+
+<p>Email: {{ object.email }}</p>
+<p>Last Login: {{ object.last_login }}</p>

@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'PassKeeperApp.auth_app',
+    'PassKeeperApp.profile_app',
 ]
 
 MIDDLEWARE = [
@@ -128,9 +128,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 AUTH_USER_MODEL = 'auth_app.AppUser'
 
-# TODO: LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login user')
-# TODO: change it to index
+LOGIN_REDIRECT_URL = reverse_lazy('login user')
+
 LOGOUT_REDIRECT_URL = reverse_lazy('login user')
 
 EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
