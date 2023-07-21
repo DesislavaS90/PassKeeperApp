@@ -8,30 +8,36 @@ from PassKeeperApp.auth_app.forms import RegistrationForm
 UserModel = get_user_model()
 
 
+# View for registering a new user
 class RegisterUserView(views.CreateView):
+    # Use the custom RegistrationForm to handle user registration
     form_class = RegistrationForm
-    template_name = 'register.html'
+    # Template for rendering the registration form
+    template_name = 'login_register.html'
 
+    # The method is overridden to log the user in after successful registration
     def form_valid(self, form):
-        response = super().form_valid(form)
+        # Save the user form and get the user object
         user = form.save()
-        # Perform the login
+        # Perform the login for the new user
         login(self.request, user)
+        # Return the HTTP response from the parent class (CreateView)
+        return super().form_valid(form)
 
-        return response
-
+    # Method to get the URL to redirect after successful user registration
     def get_success_url(self):
-
-        # Construct the URL with the desired 'pk' value
+        # Redirect to the profile details page with the updated profile's pk
         url = reverse('edit profile', kwargs={'pk': self.object.pk})
         return url
 
 
+# View for user login using Django's built-in LoginView
 class LoginUserView(auth_views.LoginView):
-    template_name = 'register.html'
+    # Template for rendering the login form
+    template_name = 'login_register.html'
 
 
-
-
+# View for user logout using Django's built-in LogoutView
 class LogoutUserView(auth_views.LogoutView):
+    # No additional logic needed, using the default behavior
     pass

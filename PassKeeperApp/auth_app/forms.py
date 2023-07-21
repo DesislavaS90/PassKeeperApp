@@ -9,3 +9,4 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = AppUser
         fields = ('username', 'email', 'password1', 'password2')
+

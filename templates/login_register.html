@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ request.user }}
+    <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-center">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+                <li class="w3-light-grey w3-xlarge w3-padding-48">
+                    <h3>
+                        <a href="{% url 'login user' %}"
+                           class="beautiful-link {% if 'login' in request.path %}active-link{% endif %}">Login</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'register user' %}"
+                           class="beautiful-link {% if 'register' in request.path %}active-link{% endif %}">Register</a>
+                    </h3>
+                </li>
+            </ul>
+            <div class="custom-form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-field">
+                        {{ form.username.label_tag }}<br>{{ form.username }}
+                        {{ form.username.errors }}
+                    </div>
+
+                    {% if 'register' in request.path %}
+                        <div class="form-field">
+                            {{ form.email.label_tag }}<br>{{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+
+                        <div class="form-field">
+                            {{ form.password1.label_tag }}<br>{{ form.password1 }}
+                        </div>
+
+                        <div class="form-field">
+                            {{ form.password2.label_tag }}<br>{{ form.password2 }}
+                        </div>
+                    {% else %}
+                        <div class="form-field">
+                            {{ form.password.label_tag }}<br>{{ form.password }}
+                        </div>
+                    {% endif %}
+                    <br>
+                    <!-- Custom buttons for login or registration -->
+                    <div class="custom-buttons">
+                        <button class="w3-button w3-black w3-padding-large" type="submit">
+                            {% if 'register' in request.path %}Register{% else %}Login{% endif %}
+                        </button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

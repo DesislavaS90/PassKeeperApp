@@ -39,6 +39,8 @@ INSTALLED_APPS = [
 
     'PassKeeperApp.auth_app',
     'PassKeeperApp.profile_app',
+    'PassKeeperApp.common',
+    'PassKeeperApp.my_passwords_app',
 ]
 
 MIDDLEWARE = [
@@ -129,9 +131,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth_app.AppUser'
 
 LOGIN_URL = reverse_lazy('login user')
-LOGIN_REDIRECT_URL = reverse_lazy('login user')
-
-LOGOUT_REDIRECT_URL = reverse_lazy('login user')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

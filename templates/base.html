@@ -1,0 +1,223 @@
+<html>
+<head>
+    <title>PassKeeper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", sans-serif
+        }
+
+        body, html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("https://www.w3schools.com/w3images/mac.jpg");
+            min-height: 50%;
+        }
+
+        .w3-bar .w3-button {
+            padding: 16px;
+        }
+
+    </style>
+{#Style for the register/login upper buttons#}
+<style>
+    /* Custom CSS */
+    .beautiful-link {
+        text-decoration: none;
+        font-size: 22px; /* Increase the font size to make the links bigger */
+        color: #000; /* Black color */
+        padding: 10px 20px; /* Increase the padding to make the links wider and taller */
+        border: 2px solid #000; /* Black border */
+        border-radius: 15px; /* Adding rounded corners to the links */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Adding a transition effect for background and text color */
+    }
+
+    .beautiful-link:hover {
+        background-color: #000; /* Black background on hover */
+        color: #fff; /* White text color on hover */
+    }
+
+    /* Highlight the active link */
+    .active-link {
+        background-color: #000; /* Black background for active link */
+        color: #fff; /* White text color for active link */
+    }
+</style>
+{#Style for the register/login form#}
+<style>
+    /* Custom CSS */
+    .beautiful-link {
+        text-decoration: none;
+        font-size: 22px; /* Increase the font size to make the links bigger */
+        color: #000; /* Black color */
+        padding: 10px 20px; /* Increase the padding to make the links wider and taller */
+        border: 2px solid #000; /* Black border */
+        border-radius: 15px; /* Adding rounded corners to the links */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Adding a transition effect for background and text color */
+    }
+
+    .beautiful-link:hover {
+        background-color: #000; /* Black background on hover */
+        color: #fff; /* White text color on hover */
+    }
+
+    /* Highlight the active link */
+    .active-link {
+        background-color: #000; /* Black background for active link */
+        color: #fff; /* White text color for active link */
+    }
+
+    /* Additional styles to display form fields in a single column */
+    .custom-form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-field {
+        text-align: center;
+    }
+</style>
+
+<style>
+        /* Custom CSS for header font */
+        .header-text {
+            font-family: 'Open Sans', sans-serif; /* Use a Google Font or a custom font here */
+            font-size: 25px; /* Increase the font size */
+            font-weight: bold; /* Make the font bolder */
+            letter-spacing: 3px; /* Adjust letter spacing */
+            line-height: 1.5; /* Set an appropriate line height */
+            color: #fff; /* White text color */
+            animation: float-up 4s ease infinite;
+            transform-origin: center;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">PassKeeper</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="#about" class="w3-bar-item w3-button">PASSWORD GENERATOR</a>
+            {% if request.user.is_authenticated %}
+            <div class="w3-dropdown-hover">
+                <button class="w3-button" onclick="window.location.href='{% url 'details profile' pk=request.user.id %}';"><i class="fa fa-user"></i> PROFILE</button>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <a href="{% url 'logout user' %}" class="w3-bar-item w3-button">Logout</a>
+                </div>
+            </div>
+             <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-navicon"></i> MY CREDENTIALS</a>
+             <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-lock"></i> MY PASSWORDS</a>
+            <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+
+            {% else %}
+            <a href="{% url 'login user' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN/REGISTER</a>
+            <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+           {% endif %}
+        </div>
+
+
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+           onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none"
+     id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+    {% if request.user.is_authenticated %}
+    <div class="w3-dropdown-hover">
+    <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button">LOGOU</a>
+    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">MY CREDENTIALS</a>
+    <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">MY PASSWORDS</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    {% else %}
+        <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN/REGISTER</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    {% endif %}
+    </div>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-bottomleft" style="padding: 20px;">
+            <span class="header-text">PassKeeprApp: All Your Credentials in One Spot</span><br>
+        </div>
+</header>
+
+
+
+{% block content %}
+{% endblock %}
+
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    <p class="w3-small">This website was made with Django.</p>
+</footer>
+
+<script>
+    {#// Modal Image Gallery#}
+    {#function onClick(element) {#}
+    {#  document.getElementById("img01").src = element.src;#}
+    {#  document.getElementById("modal01").style.display = "block";#}
+    {#  var captionText = document.getElementById("caption");#}
+    {#  captionText.innerHTML = element.alt;#}
+
+
+
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+        } else {
+            mySidebar.style.display = 'block';
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
+

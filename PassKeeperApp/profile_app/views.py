@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 from PassKeeperApp.profile_app.forms import ProfileForm
@@ -10,7 +9,7 @@ UserModel = get_user_model()
 
 
 class DetailsProfileView(LoginRequiredMixin, views.DetailView):
-    template_name = 'details.html'
+    template_name = 'profile_details.html'
     model = Profile
 
     def get_object(self, queryset=None):
@@ -21,8 +20,7 @@ class DetailsProfileView(LoginRequiredMixin, views.DetailView):
 class EditProfileView(LoginRequiredMixin, views.UpdateView):
     model = Profile
     form_class = ProfileForm
-    template_name = 'edit_profile.html'
-    success_url = reverse_lazy('edit profile')
+    template_name = 'profile_edit.html'
 
     def get_object(self, queryset=None):
         # Return the profile of the logged-in user
@@ -40,7 +38,7 @@ class EditProfileView(LoginRequiredMixin, views.UpdateView):
 
 
 class DeleteProfileView(LoginRequiredMixin, views.DeleteView):
-    template_name = 'delete.html'
+    template_name = 'profile_delete.html'
     pk_url_kwarg = 'pk'
     model = UserModel
     success_url = reverse_lazy('login user')
