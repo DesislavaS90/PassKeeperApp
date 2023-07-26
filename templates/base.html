@@ -128,7 +128,7 @@
         <a href="#home" class="w3-bar-item w3-button w3-wide">PassKeeper</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
-            <a href="#about" class="w3-bar-item w3-button">PASSWORD GENERATOR</a>
+            <a href="{% url 'password' %}" class="w3-bar-item w3-button">PASSWORD GENERATOR</a>
             {% if request.user.is_authenticated %}
             <div class="w3-dropdown-hover">
                 <button class="w3-button" onclick="window.location.href='{% url 'details profile' pk=request.user.id %}';"><i class="fa fa-user"></i> PROFILE</button>
@@ -137,7 +137,6 @@
                 </div>
             </div>
              <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-navicon"></i> MY CREDENTIALS</a>
-             <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-lock"></i> MY PASSWORDS</a>
             <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
 
             {% else %}
@@ -165,7 +164,6 @@
     <div class="w3-dropdown-hover">
     <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button">LOGOU</a>
     <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">MY CREDENTIALS</a>
-    <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">MY PASSWORDS</a>
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
     {% else %}
         <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN/REGISTER</a>

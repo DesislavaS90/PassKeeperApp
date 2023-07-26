@@ -36,19 +36,30 @@
   </div>
 </div>
 
-<!-- Promo Section - "We know design" -->
-<div class="w3-container w3-light-grey" style="padding:128px 16px" id="about">
-  <div class="w3-row-padding">
-    <div class="w3-col m6">
-      <h3>Password Generator</h3>
-      <p>Create your safe password.<br></p>
-      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-gears"> </i> Generate</a></p>
+<!-- Password Generator -->
+    <div class="w3-container w3-light-grey" style="padding:128px 16px" id="password">
+        <div class="w3-row-padding">
+            <div class="w3-col m6">
+                <h3>Password Generator</h3>
+                <p>Create your safe password.<br></p>
+
+                <form method="POST" action="{% url 'password' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if password %}
+                        <p>Your generated password: {{ password }}</p>
+                    {% endif %}
+                    <input type="submit" name="generate" value="Generate" class="w3-button w3-black">
+                    <input type="submit" name="save" value="Save" class="w3-button w3-black">
+                </form>
+
+            </div>
+            <div class="w3-col m6">
+                <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg"
+                     alt="Buildings" width="700" height="394">
+            </div>
+        </div>
     </div>
-    <div class="w3-col m6">
-      <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg" alt="Buildings" width="700" height="394">
-    </div>
-  </div>
-</div>
 
 <!-- Contact Section -->
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">

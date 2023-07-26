@@ -1,7 +1,18 @@
-<form method="post" action="{% url 'delete profile' pk=request.user.id %}">
-{{ form}}
-{% csrf_token %}
+{% extends 'base.html' %}
+{% block content %}
 
-    <button type="submit">Delete</button>
+    <div class="w3-row-padding" style="margin-top:64px">
+        <div class=" w3-center">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+                <form method="post" action="{% url 'delete profile' pk=request.user.id %}">
+                    {{ form }}
+                    {% csrf_token %}
+                    <h4>Are you sure you want to delete this profile?</h4>
 
-</form>
+                    <button class="w3-button w3-black w3-padding-large">Delete</button>
+
+                </form>
+            </ul>
+        </div>
+
+{% endblock %}

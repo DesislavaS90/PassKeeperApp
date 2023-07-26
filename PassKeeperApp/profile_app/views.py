@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
-from PassKeeperApp.profile_app.forms import ProfileForm
+from PassKeeperApp.profile_app.forms import ProfileEditForm
 from PassKeeperApp.profile_app.models import Profile
 
 UserModel = get_user_model()
@@ -19,7 +19,7 @@ class DetailsProfileView(LoginRequiredMixin, views.DetailView):
 
 class EditProfileView(LoginRequiredMixin, views.UpdateView):
     model = Profile
-    form_class = ProfileForm
+    form_class = ProfileEditForm
     template_name = 'profile_edit.html'
 
     def get_object(self, queryset=None):

@@ -7,6 +7,7 @@
     <div class=" w3-center">
       <ul class="w3-ul w3-white w3-hover-shadow">
         <li class="w3-light-grey w3-xlarge w3-padding-48"><h3>Profile Details</h3></li>
+          <li class="w3-padding-16"><b>Username:</b> {{ object.username }}</li>
           {% if object.profile.first_name and object.profile.last_name %}
         <li class="w3-padding-16"><b>Name:</b> {{ object.profile.first_name }} {{ object.profile.last_name }}</li>
           {% elif object.profile.first_name %}
@@ -19,14 +20,12 @@
 
         <li class="w3-light-grey w3-padding-24">
 
-          <button class="w3-button w3-black w3-padding-large">Edit</button>
-            <button class="w3-button w3-black w3-padding-large">Delete</button>
+            <a href="{% url 'edit profile' pk=request.user.id %}" class="w3-button w3-black w3-padding-large">Edit</a>
+            <a href="{% url 'delete profile' pk=request.user.id %}" class="w3-button w3-black w3-padding-large">Delete</a>
         </li>
       </ul>
     </div>
   </div>
-
-
 
 
 {% endblock %}
