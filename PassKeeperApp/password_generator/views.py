@@ -1,8 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.views import View
 from django.shortcuts import render, redirect
 from .forms import PasswordGeneratorForm
 import string
 import random
+
+UserModel = get_user_model()
 
 
 #  This view is for rendering a form where users can specify settings for generating a password,
@@ -40,12 +43,14 @@ class PasswordGeneratorView(View):
                 return render(request, self.template_name, {'form': form, 'password': password})
 
             elif 'save' in request.POST:
-                # Saving the password generator settings for the user
-                password_generator = form.save(commit=False)
-                password_generator.user = self.request.user
-                password_generator.save()
-                # TODO: Change the url to my credentials create
-                return redirect('index')
+                if request.user.is_authenticated:
+                    # Saving the password generator settings for the user
+                    password_generator = form.save(commit=False)
+                    password_generator.user = self.request.user
+                    password_generator.save()
+                    return redirect('my_credentials_create_view')
+                else:
+                    return redirect('login user')
 
         # If the form is not valid, we render the form again with the form errors.
         return render(request, self.template_name, {'form': form, 'password': password})

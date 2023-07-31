@@ -1,5 +1,5 @@
 from django import forms
-from PassKeeperApp.my_passwords_app.models import PasswordGenerator
+from PassKeeperApp.password_generator.models import PasswordGenerator
 
 
 class PasswordGeneratorForm(forms.ModelForm):

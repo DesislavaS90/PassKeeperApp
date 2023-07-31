@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from PassKeeperApp.auth_app.models import AppUser
+
+UserModel = get_user_model()
 
 
 # The model have fields representing different parameters of the password generation, such as length, whether

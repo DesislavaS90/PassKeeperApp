@@ -43,7 +43,7 @@
                 <h3>Password Generator</h3>
                 <p>Create your safe password.<br></p>
 
-                <form method="POST" action="{% url 'password' %}">
+                <form method="POST" action="{% url 'password generator' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
                     {% if password %}
@@ -55,7 +55,7 @@
 
             </div>
             <div class="w3-col m6">
-                <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg"
+                <img class="w3-image w3-round-large" src="https://i0.wp.com/whatismyip.network/wp-content/uploads/2019/09/Strong-Password-Generator.jpg?fit=1280%2C721&ssl=1"
                      alt="Buildings" width="700" height="394">
             </div>
         </div>
@@ -65,22 +65,11 @@
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
   <h3 class="w3-center">CONTACT</h3>
   <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
-  <div style="margin-top:48px">
+  <div style="margin-top:48px" class="w3-center">
     <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: info.passkeeper@gmail.com</p>
     <br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p>
-        <button class="w3-button w3-black" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
-      </p>
-    </form>
     <!-- Image of location/map -->
-    <img src="https://www.w3schools.com/w3images/map.jpg" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
+    <img src="https://nethunt.com/blog/content/images/2020/06/How-to-Choose-Professional-Email-Address-1.jpg" class="w3-image w3-greyscale" style="width:70%;margin-top:38px">
   </div>
 </div>
 

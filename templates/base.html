@@ -125,10 +125,11 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
-        <a href="#home" class="w3-bar-item w3-button w3-wide">PassKeeper</a>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide">PassKeeper</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
-            <a href="{% url 'password' %}" class="w3-bar-item w3-button">PASSWORD GENERATOR</a>
+            <a href="#password"
+            <a href="{% url 'password generator' %}" class="w3-bar-item w3-button"><i class="fa fa-cogs"></i> PASSWORD GENERATOR</a>
             {% if request.user.is_authenticated %}
             <div class="w3-dropdown-hover">
                 <button class="w3-button" onclick="window.location.href='{% url 'details profile' pk=request.user.id %}';"><i class="fa fa-user"></i> PROFILE</button>
@@ -136,7 +137,7 @@
                     <a href="{% url 'logout user' %}" class="w3-bar-item w3-button">Logout</a>
                 </div>
             </div>
-             <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-navicon"></i> MY CREDENTIALS</a>
+             <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-folder-open"></i> MY CREDENTIALS</a>
             <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
 
             {% else %}
