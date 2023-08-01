@@ -25,6 +25,7 @@ class EditProfileView(LoginRequiredMixin, views.UpdateView):
     def get_object(self, queryset=None):
         # Return the profile of the logged-in user
         profile, created = Profile.objects.get_or_create(user=self.request.user)
+
         return profile
 
     def form_valid(self, form):

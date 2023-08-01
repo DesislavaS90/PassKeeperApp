@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.template.defaultfilters import slugify
+
 from PassKeeperApp.auth_app.models import AppUser
 
 UserModel = get_user_model()
@@ -22,5 +24,12 @@ class MyCredentials(models.Model):
         blank=True,
         null=True,
     )
+    slug = models.SlugField(unique=True, null=False, default='', blank=True, max_length=255, editable=False)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.username)  # or whatever field you want to create the slug from
+        super().save(*args, **kwargs)
+

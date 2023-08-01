@@ -48,7 +48,7 @@ class PasswordGeneratorView(View):
                     password_generator = form.save(commit=False)
                     password_generator.user = self.request.user
                     password_generator.save()
-                    return redirect('my_credentials_create_view')
+                    return redirect('credentials create')
                 else:
                     return redirect('login user')
 

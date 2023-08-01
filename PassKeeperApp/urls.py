@@ -24,4 +24,5 @@ urlpatterns = [
     path('profile/', include('PassKeeperApp.profile_app.urls')),
     path('', include('PassKeeperApp.password_generator.urls')),
     path('my_credentials/', include('PassKeeperApp.my_credentials.urls')),
+
 ]
