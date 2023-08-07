@@ -133,4 +133,7 @@ EMAIL_HOST_USER = 'info.passkeeper@gmail.com'
 EMAIL_HOST_PASSWORD = 'emsfrpzuikinbtra'
 
 
+ENCRYPT_KEY = 'GwFr18tHQawZbWSQAaRmgVKwkSsFNL23hYSzZ0BkelI='
+
+
 

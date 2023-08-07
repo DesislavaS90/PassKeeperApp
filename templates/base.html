@@ -136,7 +136,7 @@
                     <a href="{% url 'logout user' %}" class="w3-bar-item w3-button">Logout</a>
                 </div>
             </div>
-             <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-folder-open"></i> MY CREDENTIALS</a>
+             <a href="{% url 'list credentials' %}" class="w3-bar-item w3-button"><i class="fa fa-folder-open"></i> MY CREDENTIALS</a>
             <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
 
             {% else %}

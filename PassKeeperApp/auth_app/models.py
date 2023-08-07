@@ -48,7 +48,7 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    # Optional field for access code
+    # The code will be sent to the user's email
     access_code = models.CharField(max_length=128, blank=True, null=True)
 
     # Associate the custom AppUserManager with the objects attribute

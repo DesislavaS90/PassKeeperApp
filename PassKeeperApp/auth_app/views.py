@@ -11,7 +11,7 @@ UserModel = get_user_model()
 class RegisterUserView(views.CreateView):
     # Use the custom RegistrationForm to handle user registration
     form_class = RegistrationForm
-    # Template for rendering the registration form
+    # Template for the registration form
     template_name = 'login_register.html'
 
     # The method is overridden to log the user in after successful registration

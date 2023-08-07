@@ -30,7 +30,7 @@ class EditProfileView(LoginRequiredMixin, views.UpdateView):
 
     def form_valid(self, form):
         # Save the updated profile instance
-        profile = form.save()
+        form.save()
         return super().form_valid(form)
 
     def get_success_url(self):
