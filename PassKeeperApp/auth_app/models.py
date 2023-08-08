@@ -59,3 +59,5 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     # Set the 'email' field as the EMAIL_FIELD for authentication
     EMAIL_FIELD = 'email'
 
+    REQUIRED_FIELDS = ['email']
+

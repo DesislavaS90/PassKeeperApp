@@ -12,7 +12,7 @@ class PasswordGenerator(models.Model):
     # This line creates a foreign key relationship between PasswordGenerator and AppUser.
     # Each password generator is associated with a user. on_delete=models.CASCADE means that when the associated user
     # is deleted, all PasswordGenerator instances associated with that user are also deleted.
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
 
     length = models.PositiveIntegerField()
     use_uppercase = models.BooleanField(default=False)

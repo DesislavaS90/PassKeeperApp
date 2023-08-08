@@ -1,8 +1,7 @@
 from cryptography.fernet import Fernet
 from django import forms
 from django.conf import settings
-
-from PassKeeperApp.my_credentials.models import MyCredentials
+from PassKeeperApp.my_credentials.models import MyCredentials, Category
 
 
 class VerificationForm(forms.Form):
@@ -34,3 +33,10 @@ class MyCredentialsEditForm(forms.ModelForm):
     class Meta:
         model = MyCredentials
         fields = ['username', 'new_password', 'comment', 'category']
+
+
+class MyCategoryCreateForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name', 'comment']
+

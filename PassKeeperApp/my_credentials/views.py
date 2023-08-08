@@ -6,8 +6,9 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic as views
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
-from PassKeeperApp.my_credentials.forms import VerificationForm, MyCredentialsCreateForm, MyCredentialsEditForm
-from PassKeeperApp.my_credentials.models import MyCredentials
+from PassKeeperApp.my_credentials.forms import VerificationForm, MyCredentialsCreateForm, MyCredentialsEditForm, \
+    MyCategoryCreateForm
+from PassKeeperApp.my_credentials.models import MyCredentials, Category
 
 UserModel = get_user_model()
 
@@ -72,10 +73,26 @@ class CredentialsListView(LoginRequiredMixin, views.ListView):
     template_name = 'credentials_list.html'  # Use the actual template name here
     context_object_name = 'credentials'  # The name of the context variable in your template
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+
+        # Add the list of categories to the context
+        user_categories = Category.objects.filter(user=self.request.user)
+        context['categories'] = user_categories
+
+        return context
+
     def get_queryset(self):
         # Only return credentials belonging to the current user
         queryset = super().get_queryset()
         queryset = queryset.filter(user=self.request.user)
+
+        # If a category ID was provided, filter by that category
+        category_id = self.request.GET.get('category')
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+
         return queryset
 
     def dispatch(self, request, *args, **kwargs):
@@ -126,11 +143,14 @@ class CredentialsDeleteView(LoginRequiredMixin, views.DeleteView):
 # Category VIEWS
 
 class CategoryCreateView(LoginRequiredMixin, views.CreateView):
-    pass
+    model = Category
+    form_class = MyCategoryCreateForm
+    template_name = 'category_create.html'
+    success_url = reverse_lazy('list credentials')
 
-
-class CategoryListView(LoginRequiredMixin, views.ListView):
-    pass
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class CategoryEditView(LoginRequiredMixin, views.UpdateView):

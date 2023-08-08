@@ -1,8 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
-
-# Retrieves the user model currently active in the project
-UserModel = get_user_model()
+from PassKeeperApp.auth_app.models import AppUser
 
 
 class Profile(models.Model):
@@ -21,7 +18,7 @@ class Profile(models.Model):
     # One-to-one relationship between User and Profile models.
     # If the Profile is deleted, the User will be deleted as well (models.CASCADE)
     user = models.OneToOneField(
-        UserModel, on_delete=models.CASCADE,
+        AppUser, on_delete=models.CASCADE,
         primary_key=True,
         related_name='profile'
     )
