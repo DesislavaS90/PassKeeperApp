@@ -1,0 +1,72 @@
+[
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Ancient Passwords",
+      "content": " The idea of passwords isn't just a digital age phenomenon. Ancient Romans used passwords as a way to convey messages among the military."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " First Computer Password",
+      "content": " The Compatible Time-Sharing System (CTSS) at MIT, which came into existence in the 1960s, is credited with the implementation of the first computer password."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Common Passwords",
+      "content": " Despite security risks, many people still use easily guessable passwords like \"123456\", \"password\", or \"admin\"."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Average Number",
+      "content": " According to a report by NordPass in 2019, an average internet user has around 70-80 passwords."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Breaches",
+      "content": " In many data breaches, passwords are often the primary target for cybercriminals."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Reuse",
+      "content": " About 65% of people reuse the same password for multiple accounts, increasing vulnerability."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Password Lifespan",
+      "content": " The average lifespan of a password, i.e., the time before it\u2019s changed, is around 90 days for most businesses."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Two-Factor Explosion",
+      "content": " Two-factor authentication saw a significant rise post-2010, making accounts more secure than using just a password."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Password Managers",
+      "content": " By 2020, more than 60% of businesses were using a password manager to help employees manage their security."
+    }
+  },
+  {
+    "model": "common.Facts",
+    "fields": {
+      "title": " Biometrics",
+      "content": " Companies like Apple and Samsung have increasingly integrated biometric security, indicating a potential shift away from traditional passwords in the future."
+    }
+  }
+]

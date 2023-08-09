@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-center">
+            <div class="w3-card w3-white w3-hover-shadow">
+                <h3 class="w3-light-grey w3-xlarge w3-padding-48">My Categories</h3>
+
+
+                <table class="w3-table w3-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>Credentials in</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for category in categories %}
+                        <tr>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.comment|truncatechars:20 }}</td>
+                            <td>{{ category.mycredentials_set.count }}</td>
+
+                            <td>
+                                <a href="{% url 'update category' pk=category.pk %}" class="w3-button w3-black">Edit</a>
+                                <a href="{% url 'delete category' pk=category.pk %}" class="w3-button w3-red">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="{% url 'create category' %}" class="w3-button w3-green">Create Category</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

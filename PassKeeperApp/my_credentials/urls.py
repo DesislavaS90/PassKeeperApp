@@ -13,6 +13,7 @@ urlpatterns = [
     
     # Category URL
     path('category/create/', views.CategoryCreateView.as_view(), name='create category'),
+    path('category_list/', views.CategoryListView.as_view(), name='list categories'),
     path('category/<int:pk>/update/', views.CategoryEditView.as_view(), name='update category'),
     path('category/<int:pk>/delete/', views.CategoryDeleteView.as_view(), name='delete category'),
 

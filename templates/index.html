@@ -39,27 +39,74 @@
 <!-- Password Generator -->
     <div class="w3-container w3-light-grey" style="padding:128px 16px" id="password">
     <div class="w3-row-padding">
-        <div class="w3-col m6">
-            <h3 style="font-family: Arial, sans-serif; color: #333;">Password Generator</h3>
-            <p style="font-family: Arial, sans-serif; color: #666;">Create your safe password.<br></p>
 
-            <form method="POST" action="{% url 'password generator' %}" style="margin-top: 20px;">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <p>Your generated password: {% if password %} {{ password }}</p>
-                {% endif %}
-                <div style="margin-top: 30px;">
-                <input type="submit" name="generate" value="Generate" class="w3-button w3-black" style="margin-right: 10px;">
-                <input type="submit" name="save" value="Save" class="w3-button w3-black">
-                </div>
-            </form>
+        <!-- Parent Flex Container -->
+        <div style="display: flex; justify-content: space-between; align-items: start;">
 
-        </div>
-        <div class="w3-col m6">
-            <img class="w3-image w3-round-large" src="https://i0.wp.com/whatismyip.network/wp-content/uploads/2019/09/Strong-Password-Generator.jpg?fit=1280%2C721&ssl=1"
-                 alt="Buildings" width="700" height="394" style="border-radius: 15px;">
-        </div>
+            <!-- Left Column -->
+            <div class="w3-col m6" style="max-width: 48%; flex: 0 0 48%;">
+                <h3 style="font-family: 'Arial', sans-serif; color: #333; font-weight: 600;">Password Generator</h3>
+                <p style="font-family: 'Arial', sans-serif; color: #666; margin-top: 10px;">Create your safe password.</p>
+
+                <form method="POST" action="{% url 'password generator' %}" style="margin-top: 30px;">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div style="display: flex; align-items: center; margin-top: 15px;">
+                        <p style="margin-right: 10px;">Your generated password:</p>
+                        <input type="text" value="{% if password %}{{ password }}{% endif %}" readonly class="w3-input" style="width: auto; display: inline-block; border: none;">
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <input type="submit" name="generate" value="Generate" class="w3-button w3-black w3-hover-shadow-small" style="margin-right: 10px; transition: all 0.3s;">
+                        <input type="submit" name="save" value="Save" class="w3-button w3-black w3-hover-shadow-small" style="transition: all 0.3s;">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Column -->
+            <div class="w3-col m6" style="max-width: 48%; flex: 0 0 58%;">
+                <img class="w3-image" src="https://i0.wp.com/whatismyip.network/wp-content/uploads/2019/09/Strong-Password-Generator.jpg?fit=1280%2C721&ssl=1"
+                     alt="Buildings" width="700" height="394" style="border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+            </div>
+
+        </div> <!-- End of Parent Flex Container -->
+
     </div>
+</div>
+
+
+    <!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="team">
+  <h3 class="w3-center">Advices and Facts</h3>
+  <p class="w3-center w3-large">{{ current_fun.title }}</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-half w3-padding-large">
+      <div class="w3-card">
+    <div class="w3-center">
+        <img src="https://i.imgur.com/k65lKgP.png" alt="facts img" style="width:60%">
+    </div>
+        <div class="w3-container w3-center">
+          <h3>{{ current_fact.title }}</h3>
+
+          <p>{{ current_fact.content }}</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="w3-half w3-padding-large">
+      <div class="w3-card">
+       <div class="w3-center">
+        <img src="https://i.imgur.com/t46lwqv.png" alt="advices img" style="width:60%">
+    </div>
+        <div class="w3-container w3-center">
+          <h3>{{ current_advice.title }}</h3>
+
+          <p>{{ current_advice.content }}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Contact Section -->

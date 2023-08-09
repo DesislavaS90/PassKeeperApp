@@ -1,0 +1,62 @@
+[
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Cracking More than Just Password Jokes!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Avoiding Oops Moments in Cybersecurity!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Learning So You Don\u2019t Get \u201cPass-teriously\u201d Hacked!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Making Passwords Stronger, One Laugh at a Time!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Because 'Password123' Isn\u2019t Funny Anymore!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Turning 'Uh-Oh!' into 'A-Ha!' with Digital Wisdom!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Tips, Tricks, and Chuckles for the Cyber-Savvy!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "The Dos, Don'ts, and LOLs of Passwords!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Where Keyboard Warriors Get Their Giggle On!"
+    }
+  },
+  {
+    "model": "common.Fun",
+    "fields": {
+      "title": "Keeping Things Secure and Silly in Cyberspace!"
+    }
+  }
+]

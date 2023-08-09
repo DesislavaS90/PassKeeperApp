@@ -1,0 +1,72 @@
+[
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Length Matters",
+      "content": " Make your password at least 12-16 characters long Longer passwords generally offer better security"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Variety",
+      "content": " Use a combination of upper and lower case letters, numbers, and special characters"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Avoid Personal Information",
+      "content": " Do not use easily available information like your name, birthdate, or username"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Password Managers",
+      "content": " Consider using a password manager to keep track of your passwords securely"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Regularly Update",
+      "content": " Change your passwords regularly, at least every 3-6 months"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Unique for Every Account",
+      "content": " Don't reuse passwords Each account should have its own unique password"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Two-Factor Authentication (2FA)",
+      "content": " Whenever available, enable 2FA for an added layer of security"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Avoid Common Words",
+      "content": " Stay away from dictionary words, phrases, or sequential numbers"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Check Breaches",
+      "content": " Use platforms like \"Have I Been Pwned?\" to check if your password has been compromised in a data breach"
+    }
+  },
+  {
+    "model": "common.Advices",
+    "fields": {
+      "title": " Secure Recovery",
+      "content": " Ensure that your password recovery options (like security questions) are not easily guessable"
+    }
+  }
+]

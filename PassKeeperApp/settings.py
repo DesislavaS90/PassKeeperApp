@@ -135,5 +135,11 @@ EMAIL_HOST_PASSWORD = 'emsfrpzuikinbtra'
 
 ENCRYPT_KEY = 'GwFr18tHQawZbWSQAaRmgVKwkSsFNL23hYSzZ0BkelI='
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+FIXTURE_DIRS = (
+    BASE_DIR / 'common.fixtures',
+)
+
 
 

@@ -34,6 +34,12 @@ class CredentialsCreateView(LoginRequiredMixin, views.CreateView):
     form_class = MyCredentialsCreateForm
     template_name = 'credentials_create.html'
 
+    def get_form_kwargs(self):
+        kwargs = super(CredentialsCreateView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        print(kwargs)
+        return kwargs
+
     def get_initial(self):
         # Get the initial dictionary from the superclass method
         initial = super().get_initial()
@@ -113,6 +119,11 @@ class CredentialsEditView(LoginRequiredMixin, views.UpdateView):
     template_name = 'credentials_edit.html'
     context_object_name = 'credential'  # The name of the context variable in the template
 
+    def get_form_kwargs(self):
+        kwargs = super(CredentialsEditView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def get_object(self, queryset=None):
         obj = super().get_object(queryset=queryset)
         obj.temp_password = obj.decrypt_password
@@ -146,16 +157,44 @@ class CategoryCreateView(LoginRequiredMixin, views.CreateView):
     model = Category
     form_class = MyCategoryCreateForm
     template_name = 'category_create.html'
-    success_url = reverse_lazy('list credentials')
+    success_url = reverse_lazy('list categories')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
+class CategoryListView(LoginRequiredMixin, views.ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'categories'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        # Check if there are any categories for this user
+        if not self.get_queryset().exists():
+            # If not, redirect to the "create category" view
+            return redirect('create category')
+        return super().get(request, *args, **kwargs)
+
+
 class CategoryEditView(LoginRequiredMixin, views.UpdateView):
-    pass
+    model = Category
+    template_name = 'category_edit.html'
+    success_url = reverse_lazy('list categories')
+    fields = ('name', 'comment')
 
 
 class CategoryDeleteView(LoginRequiredMixin, views.DeleteView):
-    pass
+    model = Category
+    template_name = 'category_delete.html'
+    success_url = reverse_lazy('list credentials')  # This is the URL to redirect to after a successful delete
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+

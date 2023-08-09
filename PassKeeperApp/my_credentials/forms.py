@@ -16,6 +16,14 @@ class MyCredentialsCreateForm(forms.ModelForm):
         model = MyCredentials
         fields = ('username', 'temp_password', 'comment', 'category')  # 'temp_password' instead of 'password'
 
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)  # Retrieve user from passed arguments
+        super(MyCredentialsCreateForm, self).__init__(*args, **kwargs)
+
+        # If the user is provided, filter the categories
+        if user:
+            self.fields['category'].queryset = Category.objects.filter(user=user)
+
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get("temp_password")
@@ -33,6 +41,15 @@ class MyCredentialsEditForm(forms.ModelForm):
     class Meta:
         model = MyCredentials
         fields = ['username', 'new_password', 'comment', 'category']
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)  # Retrieve user from passed arguments
+        super(MyCredentialsEditForm, self).__init__(*args, **kwargs)
+
+        # If the user is provided, filter the categories
+        if user:
+            self.fields['category'].queryset = Category.objects.filter(user=user)
+
 
 
 class MyCategoryCreateForm(forms.ModelForm):

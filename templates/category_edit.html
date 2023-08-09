@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="w3-row-padding" style="margin-top:64px">
+        <div class=" w3-center">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+                <li class="w3-light-grey w3-xlarge w3-padding-48"><h3>Edit Category</h3></li>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="w3-button w3-black w3-padding-large">Edit</button>
+                </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
