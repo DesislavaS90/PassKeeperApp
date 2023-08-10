@@ -57,7 +57,7 @@
                     </div>
 
                     <div style="margin-top: 30px;">
-                        <input onclick="window.location.href='';" type="submit" name="generate" value="Generate" class="w3-button w3-black w3-hover-shadow-small" style="margin-right: 10px; transition: all 0.3s;">
+                        <input type="submit" name="generate" value="Generate" class="w3-button w3-black w3-hover-shadow-small" style="margin-right: 10px; transition: all 0.3s;">
                         <input type="submit" name="save" value="Save" class="w3-button w3-black w3-hover-shadow-small" style="transition: all 0.3s;">
                     </div>
                 </form>
@@ -121,9 +121,6 @@
   </div>
 </div>
 
-document.getElementById('PasswordGeneratorForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    this.submit();
-});
+
 
 {% endblock %}

@@ -37,7 +37,6 @@ class CredentialsCreateView(LoginRequiredMixin, views.CreateView):
     def get_form_kwargs(self):
         kwargs = super(CredentialsCreateView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
-        print(kwargs)
         return kwargs
 
     def get_initial(self):
@@ -47,6 +46,7 @@ class CredentialsCreateView(LoginRequiredMixin, views.CreateView):
         generated_password = self.request.session.get('generated_password', None)
         if generated_password is not None:
             # If a password was generated, add it to the initial form data
+
             initial['temp_password'] = generated_password
         return initial
 

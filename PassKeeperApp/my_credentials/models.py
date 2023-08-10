@@ -29,6 +29,8 @@ class Category(models.Model):
 
 
 class MyCredentials(models.Model):
+    SLUG_ID = 1
+
     username = models.CharField(max_length=100)
     password = models.BinaryField()  # store encrypted password as binary
     comment = models.TextField(
@@ -54,7 +56,8 @@ class MyCredentials(models.Model):
     def save(self, *args, **kwargs):
         # Generate slug if it's not set
         if not self.slug:
-            self.slug = slugify(self.username)
+            self.slug = slugify(f'{self.username}-{MyCredentials.SLUG_ID}')
+            MyCredentials.SLUG_ID += 1
         # Encrypt password before saving
         # self.password = self.encrypt_password()
         super().save(*args, **kwargs)
