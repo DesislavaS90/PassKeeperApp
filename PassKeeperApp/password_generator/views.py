@@ -65,6 +65,6 @@ class PasswordGeneratorView(View):
                     # If the user is not authenticated, redirect to the login page
                     return redirect('login user')
 
-        #TODO: make validations
+
         # If the form is not valid, we render the form again with the form errors.
         return render(request, self.template_name, {'form': form, 'password': password})

@@ -48,7 +48,7 @@
                 <h3 style="font-family: 'Arial', sans-serif; color: #333; font-weight: 600;">Password Generator</h3>
                 <p style="font-family: 'Arial', sans-serif; color: #666; margin-top: 10px;">Create your safe password.</p>
 
-                <form method="POST" action="{% url 'password generator' %}" style="margin-top: 30px;">
+                <form method="POST" action="{% url 'password generator' %}#password" style="margin-top: 30px;">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div style="display: flex; align-items: center; margin-top: 15px;">
@@ -57,7 +57,7 @@
                     </div>
 
                     <div style="margin-top: 30px;">
-                        <input type="submit" name="generate" value="Generate" class="w3-button w3-black w3-hover-shadow-small" style="margin-right: 10px; transition: all 0.3s;">
+                        <input onclick="window.location.href='';" type="submit" name="generate" value="Generate" class="w3-button w3-black w3-hover-shadow-small" style="margin-right: 10px; transition: all 0.3s;">
                         <input type="submit" name="save" value="Save" class="w3-button w3-black w3-hover-shadow-small" style="transition: all 0.3s;">
                     </div>
                 </form>
@@ -76,7 +76,7 @@
 
 
     <!-- Team Section -->
-<div class="w3-container" style="padding:128px 16px" id="team">
+<div class="w3-container" style="padding:64px 16px" id="team">
   <h3 class="w3-center">Advices and Facts</h3>
   <p class="w3-center w3-large">{{ current_fun.title }}</p>
   <div class="w3-row-padding" style="margin-top:64px">
@@ -110,7 +110,7 @@
 </div>
 
 <!-- Contact Section -->
-<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+<div class="w3-container w3-light-grey" style="padding:44px 16px" id="contact">
   <h3 class="w3-center">CONTACT</h3>
   <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
   <div style="margin-top:48px" class="w3-center">
@@ -120,5 +120,10 @@
     <img src="https://nethunt.com/blog/content/images/2020/06/How-to-Choose-Professional-Email-Address-1.jpg" class="w3-image w3-greyscale" style="width:50%;margin-top:10px">
   </div>
 </div>
+
+document.getElementById('PasswordGeneratorForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.submit();
+});
 
 {% endblock %}

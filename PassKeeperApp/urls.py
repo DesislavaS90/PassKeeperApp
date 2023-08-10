@@ -26,3 +26,5 @@ urlpatterns = [
     path('my_credentials/', include('PassKeeperApp.my_credentials.urls')),
 
 ]
+
+page_404 = 'PassKeeperApp.common.views.page_404'

@@ -8,6 +8,9 @@ class Facts(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = 'Facts'
+
 
 class Advices(models.Model):
     title = models.CharField(max_length=200)
@@ -16,9 +19,15 @@ class Advices(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = 'Advices'
+
 
 class Fun(models.Model):
     title = models.CharField(max_length=200)
 
     def __str__(self):
         return 'fun subtitles'
+
+    class Meta:
+        verbose_name_plural = 'Fun'

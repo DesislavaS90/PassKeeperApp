@@ -19,3 +19,6 @@ class PasswordGenerator(models.Model):
     use_numbers = models.BooleanField(default=False)
     use_special = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.length}"

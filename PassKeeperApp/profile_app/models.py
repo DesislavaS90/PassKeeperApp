@@ -23,4 +23,7 @@ class Profile(models.Model):
         related_name='profile'
     )
 
+    def __str__(self):
+        return self.user.username
+
 
