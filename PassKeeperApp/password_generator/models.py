@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator
 from django.db import models
 from PassKeeperApp.auth_app.models import AppUser
 
@@ -14,7 +15,7 @@ class PasswordGenerator(models.Model):
     # is deleted, all PasswordGenerator instances associated with that user are also deleted.
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
 
-    length = models.PositiveIntegerField()
+    length = models.PositiveIntegerField(validators=[MinValueValidator(8, 'Make sure your password is at least 8 characters long!')])
     use_uppercase = models.BooleanField(default=False)
     use_numbers = models.BooleanField(default=False)
     use_special = models.BooleanField(default=False)

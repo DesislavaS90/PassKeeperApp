@@ -6,8 +6,17 @@
             <ul class="w3-ul w3-white w3-hover-shadow">
                 <li class="w3-light-grey w3-xlarge w3-padding-48"><h3>My Profile</h3></li>
                 <form method="post">
+
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li style="list-style: none"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
                     {% csrf_token %}
                     {{ form.as_p }}
+
                     <button class="w3-button w3-black w3-padding-large">Update</button>
                 </form>
                 </li>

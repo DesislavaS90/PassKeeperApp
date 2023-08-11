@@ -133,7 +133,7 @@
             <div class="w3-dropdown-hover">
                 <button class="w3-button" onclick="window.location.href='{% url 'details profile' pk=request.user.id %}';"><i class="fa fa-user"></i> PROFILE</button>
                 <div class="w3-dropdown-content w3-bar-block w3-border">
-                    <a href="{% url 'logout user' %}" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> Logout</a>
+                    <a href="{% url 'logout user' %}" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> LOGOUT</a>
                 </div>
             </div>
              <a href="{% url 'list credentials' %}" class="w3-bar-item w3-button"><i class="fa fa-folder-open"></i> MY CREDENTIALS</a>
@@ -159,15 +159,16 @@
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none"
      id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+    <a href="{% url 'password generator' %}#password" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-cogs"></i>  PASSWORD GENERATOR</a>
     {% if request.user.is_authenticated %}
     <div class="w3-dropdown-hover">
-    <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button">LOGOU</a>
-    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">MY CREDENTIALS</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="{% url 'details profile' pk=request.user.id %}" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i> PROFILE</a>
+    <a href="{% url 'list credentials' %}" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-folder-open"></i> MY CREDENTIALS</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+    <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> LOGOUT</a>
     {% else %}
-        <a href="{% url 'logout user' %}" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN/REGISTER</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+        <a href="{% url 'login user' %}" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>  LOGIN/REGISTER</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  CONTACT</a>
     {% endif %}
     </div>
 </nav>

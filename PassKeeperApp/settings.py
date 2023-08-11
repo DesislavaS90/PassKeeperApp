@@ -142,5 +142,7 @@ FIXTURE_DIRS = (
     BASE_DIR / 'common.fixtures',
 )
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 

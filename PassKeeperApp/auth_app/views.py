@@ -1,5 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth import views as auth_views, login, authenticate, get_user_model
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, request
 from django.urls import reverse_lazy, reverse
 from django.views import generic as views
 from PassKeeperApp.auth_app.forms import RegistrationForm
@@ -22,13 +23,16 @@ class RegisterUserView(views.CreateView):
         user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'], )
         # Perform the login for the new user
         login(self.request, user)
-        # Get the URL to redirect after successful user registration
+
+        # The user will receive a short message, that he has an email confirmation
+        messages.success(self.request, 'You have successfully registered! Please check your email.')
+        # Get the URL to redirect after successful user registration to edit page so the user can add more info
         return HttpResponseRedirect(reverse('edit profile', kwargs={'pk': user.pk}))
 
 
 # View for user login using Django's built-in LoginView
 class LoginUserView(auth_views.LoginView):
-    # Template for rendering the login form
+
     template_name = 'login_register.html'
 
 

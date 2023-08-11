@@ -117,7 +117,7 @@ class CredentialsEditView(LoginRequiredMixin, views.UpdateView):
     model = MyCredentials
     form_class = MyCredentialsEditForm
     template_name = 'credentials_edit.html'
-    context_object_name = 'credential'  # The name of the context variable in the template
+    context_object_name = 'credential'
 
     def get_form_kwargs(self):
         kwargs = super(CredentialsEditView, self).get_form_kwargs()
@@ -144,7 +144,7 @@ class CredentialsEditView(LoginRequiredMixin, views.UpdateView):
 class CredentialsDeleteView(LoginRequiredMixin, views.DeleteView):
     model = MyCredentials
     template_name = 'credentials_delete.html'
-    success_url = reverse_lazy('list credentials')  # This is the URL to redirect to after a successful delete
+    success_url = reverse_lazy('list credentials')
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -192,7 +192,7 @@ class CategoryEditView(LoginRequiredMixin, views.UpdateView):
 class CategoryDeleteView(LoginRequiredMixin, views.DeleteView):
     model = Category
     template_name = 'category_delete.html'
-    success_url = reverse_lazy('list credentials')  # This is the URL to redirect to after a successful delete
+    success_url = reverse_lazy('list credentials')
 
     def get_queryset(self):
         queryset = super().get_queryset()
