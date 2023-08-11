@@ -8,13 +8,5 @@ def index(request):
     return render(request, 'index.html', {'form': form})
 
 
-
 def page_404(request):
     return render(request, 'index.html')
-
-
-
-
-
-
-
